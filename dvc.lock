@@ -1,0 +1,91 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/data_ingestion.py
+    deps:
+    - path: src/data_ingestion.py
+      hash: md5
+      md5: a1e54708aae96f3b3ec4150430d5b5e4
+      size: 4000
+    outs:
+    - path: data/raw
+      hash: md5
+      md5: 6c33a03b930b829c87ba33cc75e53fa8.dir
+      size: 901051
+      nfiles: 2
+  data_preprocessing:
+    cmd: python src/data_preprocessing.py
+    deps:
+    - path: data/raw/test.csv
+      hash: md5
+      md5: 040366d4b1f63dfa15573306be9fd802
+      size: 180928
+    - path: data/raw/train.csv
+      hash: md5
+      md5: 93f0f1c9a0ffd809cd56131de7ebf7eb
+      size: 720123
+    - path: src/data_preprocessing.py
+      hash: md5
+      md5: 8ca4b2f48009d44a674b76d3f6f4813f
+      size: 4707
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: cb1af01d9c6777ca5b20f1706c0345c9
+      size: 179287
+    - path: data/processed/train.csv
+      hash: md5
+      md5: a8fed0cbd55f22dad3c2906803e1bbbe
+      size: 711166
+  feature_engineering:
+    cmd: python src/feature_engineering.py
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: cb1af01d9c6777ca5b20f1706c0345c9
+      size: 179287
+    - path: data/processed/train.csv
+      hash: md5
+      md5: a8fed0cbd55f22dad3c2906803e1bbbe
+      size: 711166
+    - path: src/feature_engineering.py
+      hash: md5
+      md5: 054ff28ae85ef93ac2c251657dc18a46
+      size: 6888
+    outs:
+    - path: data/final/test.csv
+      hash: md5
+      md5: c7649e899cdd96c070e9c52ed3e58ce1
+      size: 321825
+    - path: data/final/train.csv
+      hash: md5
+      md5: 87f7793f4a8685a72bd35c34900c2285
+      size: 1280531
+    - path: models/encoder.pkl
+      hash: md5
+      md5: e0a776aa421703000172427742622383
+      size: 4354
+    - path: models/scaler.pkl
+      hash: md5
+      md5: cb4bf1e07bfb77c4b47af99c71f84349
+      size: 927
+  model_training:
+    cmd: python src/model_training.py
+    deps:
+    - path: data/final/test.csv
+      hash: md5
+      md5: c7649e899cdd96c070e9c52ed3e58ce1
+      size: 321825
+    - path: data/final/train.csv
+      hash: md5
+      md5: 87f7793f4a8685a72bd35c34900c2285
+      size: 1280531
+    - path: src/model_training.py
+      hash: md5
+      md5: 6f623b151446819348cd90d0c4f12886
+      size: 4138
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: becff6b521f49fe37442c64cc262a140
+      size: 166450

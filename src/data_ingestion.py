@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 
 # now file make  by the oricess if make dir
 
-log_dirs='log'
+log_dirs='logs'
 os.makedirs(log_dirs,exist_ok=True)
 
 # imoprt logging
