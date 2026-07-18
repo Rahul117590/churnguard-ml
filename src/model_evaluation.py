@@ -163,7 +163,7 @@ def main():
             X_test,y_test=load_test_data(test_path)
             metrics=model_evalution(model,X_test,y_test)
             plot(model,X_test,y_test,save_path='artifacts/plot')
-            save_metrics(metrics,output_path='artifacts')
+            save_metrics(metrics,output_path='reports')
             logger.info('the model_evalulation is sucessfully completed ')
         except FileNotFoundError as e:
             logger.error(f'this error is generated due to {e}')

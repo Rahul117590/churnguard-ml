@@ -1,0 +1,83 @@
+PROJECT: ChurnGuard ML
+=======================
+
+Project Name   : ChurnGuard ML
+Repository      : churnguard-ml
+Author          : Rahul
+GitHub          : Rahul117590
+
+DESCRIPTION
+-----------
+End-to-end machine learning pipeline to predict telecom customer churn
+using XGBoost. Includes DVC for pipeline tracking, Flask for a web-based
+prediction interface, and Docker for containerized deployment.
+
+DATASET
+-------
+Name    : Telco Customer Churn
+Source  : Kaggle (blastchar/telco-customer-churn)
+Rows    : ~7,043
+Columns : 21
+Target  : Churn (Yes/No)
+
+TECH STACK
+----------
+Language        : Python 3.10
+ML Model        : XGBoost
+Libraries       : Pandas, NumPy, Scikit-learn
+Pipeline Tool   : DVC
+Web Framework   : Flask
+Frontend        : HTML, CSS
+Deployment      : Docker
+
+PIPELINE STAGES
+----------------
+1. Data Ingestion       - load raw data, drop unwanted columns, split train/test
+2. Data Preprocessing   - remove duplicates, handle missing values, encode target
+3. Feature Engineering  - One-Hot Encoding (categorical), StandardScaler (numeric)
+4. Model Training       - train XGBoost classifier
+5. Model Evaluation     - Accuracy, Precision, Recall, F1-score, ROC-AUC
+
+MODEL COMPARISON (separate experiment file)
+--------------------------------------------
+Logistic Regression, Decision Tree, Random Forest, AdaBoost, XGBoost
+-> XGBoost performs best on ROC-AUC and F1-score (handles class imbalance
+   with scale_pos_weight and built-in regularization)
+
+FOLDER STRUCTURE
+-----------------
+data/raw            - raw ingested data
+data/processed       - cleaned data
+data/final           - encoded + scaled data
+models/              - encoder.pkl, scaler.pkl, model.pkl
+src/                 - all pipeline scripts
+reports/             - metrics.json, plots
+templates/           - index.html, result.html
+static/              - style.css
+app.py               - Flask application
+dvc.yaml             - DVC pipeline definition
+Dockerfile           - Docker build file
+requirements.txt     - project dependencies
+
+HOW TO RUN
+----------
+1. git clone https://github.com/Rahul117590/churnguard-ml.git
+2. pip install -r requirements.txt
+3. dvc repro
+4. python app.py
+5. Open http://127.0.0.1:5000
+
+DOCKER
+------
+docker build -t churn-app .
+docker run -p 5000:5000 churn-app
+
+STATUS
+------
+[ ] Data Ingestion completed
+[ ] Data Preprocessing completed
+[ ] Feature Engineering completed
+[ ] Model Training completed
+[ ] Model Evaluation completed
+[ ] Flask App completed
+[ ] Docker setup completed

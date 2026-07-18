@@ -1,0 +1,164 @@
+/* ChurnGuard ML — Simple Professional Styling */
+
+:root {
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --border: #e2e5ea;
+  --text: #1f2937;
+  --text-muted: #6b7280;
+  --primary: #2f5eff;
+  --primary-hover: #274fdb;
+  --success-bg: #eaf7ef;
+  --success-text: #1f8a4c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 48px 20px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 620px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px 40px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: var(--text);
+}
+
+.container > form::before {
+  content: "Fill in the customer's details below";
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+select,
+input[type="number"] {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fafbfc;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+select:hover,
+input[type="number"]:hover {
+  border-color: #c7cdd6;
+}
+
+select:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(47, 94, 255, 0.12);
+  background: #fff;
+}
+
+.form-group:last-of-type {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+button:hover {
+  background: var(--primary-hover);
+}
+
+/* ===== Result page ===== */
+
+.result-box {
+  text-align: center;
+  padding: 28px 20px;
+  margin: 8px 0 24px;
+  background: var(--success-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.result-box h2 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: var(--success-text);
+}
+
+.result-box p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a button {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+a button:hover {
+  background: #f3f4f6;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+  .container {
+    padding: 28px 22px;
+  }
+}
