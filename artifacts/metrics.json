@@ -1,0 +1,16 @@
+{
+    "accuracy of metrix": 0.8112136266855926,
+    "recall of models": 0.5603217158176944,
+    "f1_score of models": 0.6111111111111112,
+    "precison_score of model is ": 0.6720257234726688,
+    "confusion metrix of modele": [
+        [
+            934,
+            102
+        ],
+        [
+            164,
+            209
+        ]
+    ]
+}
